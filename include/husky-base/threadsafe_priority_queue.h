@@ -2,6 +2,7 @@
 
 #include <chrono>
 #include <condition_variable>
+#include <set>
 #include <functional>
 #include <memory>
 #include <mutex>
@@ -86,7 +87,7 @@ class ThreadsafePriorityQueue {
   int sch_mode_ = 0;
   int64_t pre_time_;
   std::mutex mu_;
-  std::unordered_set<int> global_queue_;
+  std::set<int> global_queue_;
   std::unordered_map<int, std::queue<T>> queue_;
   std::unordered_map<int, int64_t> priority_;
   std::condition_variable cond_;
